@@ -1,4 +1,4 @@
-# dbCAN Annotator
+# dbCAN Bulk Annotator
 
 ## Information
 
