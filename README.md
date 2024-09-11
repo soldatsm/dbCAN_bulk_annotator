@@ -1,12 +1,12 @@
-# dbCAN annotator
+# dbCAN Annotator
 
 ## Information
 
-This `python` script allow to make annotation of many genomes by dbCAN database at the same time. This uses `multiprocess` package from python to run several `dbcan_run`. 
+This `python` script allows to annotate many genomes with the CAZy database at the same time. It uses the `multiprocess` package from python to run multiple `dbcan_run` scripts. 
 
-User can choose number of processes so the system will not chock. List of genomes will be split to `n` processes. Within the process the annotation is executed sequentially.
+The user can choose the number of processes so that the system is not overloaded. The list of genomes is split into `N` processes. Within the process, annotation is performed sequentially.
 
-`IMPORTANT:` Scriot shoud be run in conda environment with dbCAN. That means original script `run_dbcan` should be reachable (be in `PATH`)
+`IMPORTANT:` Script should be run in conda environment with dbCAN. This means that the original script `run_dbcan` should be available (in the `PATH`).
 
 ## Requirements
 
