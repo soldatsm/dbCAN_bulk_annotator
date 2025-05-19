@@ -19,7 +19,7 @@ def argument_parser() -> argparse.ArgumentParser:
                         required=True,
                         type=str)
     parser.add_argument('-p','--pools',
-                        help='Lenght of average sublist. Number of pools = number of sublists',
+                        help='Lenght of average sublist. It indicate amount of genomes that will be annotated in one process. More number, faster work, and higher demand on the CPU',
                         default=1,
                         type=int)
     parser.add_argument('-o','--output',
@@ -32,8 +32,8 @@ def argument_parser() -> argparse.ArgumentParser:
                         type=str)
     parser.add_argument('--cpus',
                         help='Choose numper of cpus for dbCAN sub programms (dbCAN_sub, HMMER). \
-                            Default is half of available cpus',
-                        default=os.cpu_count()//2,
+                            Default is 1s',
+                        default=1,
                         type=int)
     parser.add_argument('--type', help='Chose input data type [protein, prok, meta]', 
                         choices=['protein', 'prok', 'meta'], default='protein')
