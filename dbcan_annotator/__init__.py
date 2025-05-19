@@ -1,6 +1,7 @@
 import os
 import subprocess
 from typing import Tuple
+import sys
 def annotator(*args) -> None:
     """
     Annotation of several proteomes by dbCAN database using multiprocessing.
@@ -26,18 +27,38 @@ def annotator(*args) -> None:
         cpus = tup[2]
         output = tup[3]
         terminal_size = tup[4]
+        seq_type = tup[5]
     
         fpath_folder_output = os.path.join(output, f"{genomes_lst.split('/')[-1]}_dbcan")
 
         os.mkdir(fpath_folder_output)
-        subprocess.run(["run_dbcan", f"{genomes_lst}.faa", 
-                        "protein",
-                    "--db_dir", f"{db_path}",
-                    "--dbcan_thread", f"{cpus}", 
-                    "--tf_cpu", f"{cpus}", 
-                    "--stp_cpu", f"{cpus}" ,
-                    "--out_dir", f"{fpath_folder_output}"])
-        
+        if seq_type == 'protein':
+            subprocess.run(["run_dbcan", f"{genomes_lst}.faa", 
+                            f"{seq_type}",
+                            "--db_dir", f"{db_path}",
+                            "--dbcan_thread", f"{cpus}", 
+                            "--tf_cpu", f"{cpus}", 
+                            "--stp_cpu", f"{cpus}" ,
+                            "--out_dir", f"{fpath_folder_output}"])
+        elif seq_type == 'prok':
+            subprocess.run(["run_dbcan", f"{genomes_lst}", 
+                            f"{seq_type}",
+                            "--db_dir", f"{db_path}",
+                            "--dbcan_thread", f"{cpus}", 
+                            "--tf_cpu", f"{cpus}", 
+                            "--stp_cpu", f"{cpus}" ,
+                            "--out_dir", f"{fpath_folder_output}"])
+        #TODO: Вариант с meta еще не тестировался
+        else:
+            print('Meta type still under construction. Please use protein or prok')
+            sys.exit()
+            #subprocess.run(["run_dbcan", f"{genomes_lst}.faa", 
+            #                f"{seq_type}",
+            #                "--db_dir", f"{db_path}",
+            #                "--dbcan_thread", f"{cpus}", 
+            #                "--tf_cpu", f"{cpus}", 
+            #                "--stp_cpu", f"{cpus}" ,
+            #                "--out_dir", f"{fpath_folder_output}"])
         print('\n')
         print('-' * terminal_size[0])
         print(f"{genomes_lst.split('/')[-1]} -- Done!")   
@@ -55,8 +76,8 @@ def version_printer(terminal_size:Tuple[int, int]) -> None:
     """
     script_name = 'dbCAN bulk annotator'
     base = 'Based on dbCAN <https://github.com/linnabrown/run_dbcan>'
-    version = 'Version: 0.01'
-    last_update = 'Updated: 09.09.24'
+    version = 'Version: 0.02'
+    last_update = 'Updated: 19.05.25'
     author = 'Tulenkov A.S.'
     affiliation = 'Winogradsky Institute of Microbiology, RAS'
 
