@@ -35,6 +35,8 @@ def argument_parser() -> argparse.ArgumentParser:
                             Default is half of available cpus',
                         default=os.cpu_count()//2,
                         type=int)
+    parser.add_argument('--type', help='Chose input data type [protein, prok, meta]', 
+                        choices=['protein', 'prok', 'meta'], default='protein')
     return parser
 
 
@@ -62,7 +64,7 @@ def main():
 
     dir_list = [(f"{abs_path_input}/{i.replace('.faa', '')}",
                  args.dbCAN_database, args.cpus,
-                 abs_path_output, terminal_size)
+                 abs_path_output, terminal_size, args.type)
                 for i in dir_list]
     #creation of nested list for pools
     nested_list = [dir_list[i:i+args.pools]
