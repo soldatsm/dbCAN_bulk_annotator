@@ -37,7 +37,11 @@ def argument_parser() -> argparse.ArgumentParser:
                         Default is 1.',
                         default=1,
                         type=int)
-    parser.add_argument('--type', help='Chose input data type [protein, prok, meta]', 
+    parser.add_argument('--type', help='Chose input data type [protein, prok, meta].\
+                        Make sure you chose the right option for your sequences.\
+                        proteins -- in silico translated proteome,\
+                        prok -- nucleotide assembly. Which will be annotated by Prokka,\
+                        meta -- metagenome assemblied genome. Will be annotated with Prokka.', 
                         choices=['protein', 'prok', 'meta'], default='protein')
     return parser
 
