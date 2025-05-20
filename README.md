@@ -8,6 +8,8 @@ The list of genomes is split between `N` numbers of `run_dbcan` script (it can b
 
 `IMPORTANT:` Script should be run in the conda environment with dbCAN. This means that the original script `run_dbcan` should be available (in the `PATH`).
 
+`More IMPORTANT:` That script has no power over HMMER and other programs that execute run_dbcan. This means that you cannot abort them by aborting dbCAN Bulk Annotator. (Manually, this can be done via htop by sending a kill signal to HMMER and the other programs that were executed via run_dbcan). So, before executing the script, check everything.
+
 ## Requirements
 
 1. The original [dbCAN](https://github.com/linnabrown/run_dbcan) on the computer 
