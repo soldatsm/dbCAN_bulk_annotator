@@ -33,7 +33,7 @@ def annotator(*args) -> None:
 
         os.mkdir(fpath_folder_output)
         if seq_type == 'protein':
-            subprocess.run(["run_dbcan", f"{genomes_lst}.faa", 
+            subprocess.run(["run_dbcan", f"{genomes_lst}", 
                             f"{seq_type}",
                             "--db_dir", f"{db_path}",
                             "--dbcan_thread", f"{cpus}", 
