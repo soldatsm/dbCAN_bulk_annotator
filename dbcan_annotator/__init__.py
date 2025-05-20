@@ -86,8 +86,8 @@ def version_printer(terminal_size:Tuple[int, int]) -> None:
     """
     script_name = 'dbCAN bulk annotator'
     base = 'Based on dbCAN <https://github.com/linnabrown/run_dbcan>'
-    version = 'Version: 0.02'
-    last_update = 'Updated: 19.05.25'
+    version = 'Version: 0.03'
+    last_update = 'Updated: 20.05.25'
     author = 'Tulenkov A.S.'
     affiliation = 'Winogradsky Institute of Microbiology, RAS'
 
