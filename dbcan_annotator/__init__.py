@@ -48,22 +48,32 @@ def annotator(*args) -> None:
                             "--tf_cpu", f"{cpus}", 
                             "--stp_cpu", f"{cpus}" ,
                             "--out_dir", f"{fpath_folder_output}"])
-        #TODO: Вариант с meta еще не тестировался
-        else:
-            print('Meta type still under construction. Please use protein or prok')
-            sys.exit()
-            #subprocess.run(["run_dbcan", f"{genomes_lst}.faa", 
-            #                f"{seq_type}",
-            #                "--db_dir", f"{db_path}",
-            #                "--dbcan_thread", f"{cpus}", 
-            #                "--tf_cpu", f"{cpus}", 
-            #                "--stp_cpu", f"{cpus}" ,
-            #                "--out_dir", f"{fpath_folder_output}"])
+        elif seq_type == 'meta':
+            subprocess.run(["run_dbcan", f"{genomes_lst}", 
+                            f"{seq_type}",
+                            "--db_dir", f"{db_path}",
+                            "--dbcan_thread", f"{cpus}", 
+                            "--tf_cpu", f"{cpus}", 
+                            "--stp_cpu", f"{cpus}" ,
+                            "--out_dir", f"{fpath_folder_output}"])
         print('\n')
         print('-' * terminal_size[0])
         print(f"{genomes_lst.split('/')[-1]} -- Done!")   
         print('-' * terminal_size[0])
 
+def folder_checker(folder_path:str) -> bool:
+    """
+    Check if folder is empty.
+    
+    Parameters
+    ----------
+    folder_path : str
+        Path to the folder.
+    """
+    if os.listdir(folder_path):
+        return False
+    else:
+        return True
 
 def version_printer(terminal_size:Tuple[int, int]) -> None:
     """
