@@ -80,7 +80,7 @@ def main() -> None:
     SEQ_NUMBER = len(dir_list)
     PARALLEL = int(SEQ_NUMBER/args.pools)
 
-    dir_list = [(f"{abs_path_input}/{i.replace('.faa', '')}",
+    dir_list = [(f"{abs_path_input}/{i}",
                  args.dbCAN_database, args.cpus,
                  abs_path_output, terminal_size, args.type)
                 for i in dir_list]
